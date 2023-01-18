@@ -12,12 +12,26 @@ const galleryDiv = document.querySelector('.gallery');
 const btnLoadMore = document.querySelector('.load-more');
 const pixabey = new PixabeyApi();
 const simpleLightbox = new SimpleLightbox('.gallery-item', { captionDelay: 150, captionsData: 'alt' });
-
+const endDiv = document.querySelector(".end-list");
 
 btnLoadMore.classList.add('is-hidden');
 
 formEl.addEventListener('submit', onFormSubmit);
 btnLoadMore.addEventListener('click', onBtnLoadMoreClick);
+
+const observer = new IntersectionObserver((entries)=>{
+  const options={
+    root: null,
+      rootMargin: '200px',
+      threshold: 1.0
+  }
+  console.log(entries)
+  if(!entries[0].isIntersecting){
+    return;
+  }
+})
+
+
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -36,6 +50,7 @@ function onFormSubmit(event) {
     } else {
       
       galleryDiv.innerHTML = renderEl(hits);
+      observer.observe(endDiv);
       simpleLightbox.refresh();
       // new SimpleLightbox('.gallery-item', { captionDelay: 250, captionsData: 'alt' });
       btnLoadMore.classList.remove('is-hidden');

@@ -1,12 +1,33 @@
-.search-form{
-    margin-left: auto;
+.container{
+  display: flex;
+  height: 50px;
+  border-radius: 5px;
+justify-content: center;
+align-items: center;
+    margin-right: auto;
+    background-color: rgb(244, 93, 93);
 }
+
 .gallery{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+}
+.button{
+  background-color: aquamarine;
+  border-radius: 5px;
+}
+.load-more{
+  margin: 10px;
+}
+.photo-card{
+  border:2px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 5px;
 }
 img {
   display: block;
