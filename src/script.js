@@ -1,5 +1,5 @@
 
-import axios from 'axios';
+
 import { Notify } from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -11,7 +11,6 @@ const formEl = document.querySelector('.search-form');
 const galleryDiv = document.querySelector('.gallery');
 const btnLoadMore = document.querySelector('.load-more');
 const pixabey = new PixabeyApi();
-let markup = '';
 const simpleLightbox = new SimpleLightbox('.gallery-item', { captionDelay: 150, captionsData: 'alt' });
 
 
@@ -52,11 +51,12 @@ function onBtnLoadMoreClick(event) {
     
     btnLoadMore.classList.remove('is-hidden');
     simpleLightbox.refresh()
-    if (pixabey.page === totalHits) {
+    if (pixabey.page*40 >= totalHits) {
       btnLoadMore.classList.add('is-hidden');
       Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
+      btnLoadMore.classList.add('is-hidden');
     }
   });
 }
